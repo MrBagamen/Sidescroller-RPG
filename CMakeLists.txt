@@ -11,6 +11,8 @@ set(EXEC_NAME "rpg")
 
 add_executable(${EXEC_NAME}
 src/main.cpp
+src/Map.hpp
+src/Map.cpp
 )
 
 target_link_libraries(${EXEC_NAME} ${SFML_LIBRARIES})
