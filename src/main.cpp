@@ -1,9 +1,11 @@
 #include <SFML/Graphics.hpp>
 
+const sf::Color skyColor{162, 216, 252};
+
 int main()
 {
-    sf::RenderWindow renderWindow(sf::VideoMode(800, 600, 32),
-                                  "Sidescroller-Rpg", sf::Style::Close);
+    sf::RenderWindow renderWindow({800, 600, 32}, "Sidescroller-Rpg",
+                                  sf::Style::Close);
 
     while (renderWindow.isOpen())
     {
@@ -17,7 +19,7 @@ int main()
             }
         }
 
-        renderWindow.clear();
+        renderWindow.clear(skyColor);
         renderWindow.display();
     }
 }
