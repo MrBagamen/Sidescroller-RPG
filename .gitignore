@@ -11,3 +11,6 @@
 *.lai
 *.la
 *.a
+
+# User-specific project files
+CMakeLists.txt.user
