@@ -23,7 +23,7 @@ void Map::resize(int width, int height)
 Tile& Map::tileAt(int x, int y)
 {
 #ifdef SSRPG_DEBUG
-    assert(x < m_width && y < m_height);
+    assert(x >= 0 && x < m_width && y >= 0 && y < m_height);
 #endif
     return m_tiles[y * m_width + x];
 }
@@ -31,7 +31,7 @@ Tile& Map::tileAt(int x, int y)
 const Tile &Map::tileAt(int x, int y) const
 {
 #ifdef SSRPG_DEBUG
-    assert(x < m_width && y < m_height);
+    assert(x >= 0 && x < m_width && y >= 0 && y < m_height);
 #endif
     return m_tiles[y * m_width + x];
 }
