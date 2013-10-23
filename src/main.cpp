@@ -60,10 +60,13 @@ int main()
 
         sf::Vector2i mp = sf::Mouse::getPosition(renderWindow);
 
-        if (lmbdown)
-            map.tileAt(mp.x / 32, mp.y / 32).id = tile;
-        else if (rmbdown)
-            map.tileAt(mp.x / 32, mp.y / 32).id = 0;
+        if(mp.x >= 0 && mp.x <= 800 && mp.y >= 0 && mp.y <= 600)
+        {
+            if (lmbdown)
+                map.tileAt(mp.x / 32, mp.y / 32).id = tile;
+            else if (rmbdown)
+                map.tileAt(mp.x / 32, mp.y / 32).id = 0;
+        }
 
         renderWindow.clear(skyColor);
         renderWindow.draw(map);
