@@ -36,6 +36,9 @@ int main()
                 case sf::Keyboard::Num3:
                     tile = 3;
                     break;
+                case sf::Keyboard::Num4:
+                    tile = 4;
+                    break;
                 default: ;
                 }
             }
