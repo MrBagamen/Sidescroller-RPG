@@ -5,7 +5,7 @@ find_package(SFML 2 COMPONENTS graphics window audio system REQUIRED)
 
 add_compile_options(-std=c++11 -pedantic -Wall -Wextra -Wshadow)
 
-if(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+if("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
     add_definitions(-DSSRPG_DEBUG)
 endif()
 
