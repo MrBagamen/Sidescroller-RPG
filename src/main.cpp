@@ -11,7 +11,7 @@ int main()
 
     Map map;
     int tile = 1;
-    bool lmbdown = false;
+    bool lmbdown = false, rmbdown = false;
 
     while (renderWindow.isOpen())
     {
@@ -27,9 +27,6 @@ int main()
             {
                 switch (event.key.code)
                 {
-                case sf::Keyboard::Num0:
-                    tile = 0;
-                    break;
                 case sf::Keyboard::Num1:
                     tile = 1;
                     break;
@@ -42,24 +39,28 @@ int main()
                 default: ;
                 }
             }
-            else if (event.type == sf::Event::MouseButtonPressed &&
-                     event.mouseButton.button == sf::Mouse::Left)
+            else if (event.type == sf::Event::MouseButtonPressed)
             {
-                lmbdown = true;
+                if (event.mouseButton.button == sf::Mouse::Left)
+                    lmbdown = true;
+                else if (event.mouseButton.button == sf::Mouse::Right)
+                    rmbdown = true;
             }
-            else if (event.type == sf::Event::MouseButtonReleased &&
-                     event.mouseButton.button == sf::Mouse::Left)
+            else if (event.type == sf::Event::MouseButtonReleased)
             {
-                lmbdown = false;
+                if (event.mouseButton.button == sf::Mouse::Left)
+                    lmbdown = false;
+                else if (event.mouseButton.button == sf::Mouse::Right)
+                    rmbdown = false;
             }
         }
 
+        sf::Vector2i mp = sf::Mouse::getPosition(renderWindow);
+
         if (lmbdown)
-        {
-            int x = sf::Mouse::getPosition(renderWindow).x / 32;
-            int y = sf::Mouse::getPosition(renderWindow).y / 32;
-            map.tileAt(x, y).id = tile;
-        }
+            map.tileAt(mp.x / 32, mp.y / 32).id = tile;
+        else if (rmbdown)
+            map.tileAt(mp.x / 32, mp.y / 32).id = 0;
 
         renderWindow.clear(skyColor);
         renderWindow.draw(map);
